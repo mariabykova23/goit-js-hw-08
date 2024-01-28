@@ -94,18 +94,9 @@ function createListofImages() {
 
 createListofImages();
 
-const linkRoutes = containerSrc.querySelectorAll(".gallery-link");
-
-linkRoutes.forEach((linkRoute) => {
-  linkRoute.addEventListener("click", event => {
-    event.preventDefault();
-  });
-});
-
-
 containerSrc.addEventListener("click", event => {
     event.preventDefault();
-    const targetImg=event.target.closest('li');
+    const targetImg=event.target.closest(".gallery-image");
    if (targetImg){
     showModal(targetImg);
     };
@@ -115,13 +106,13 @@ containerSrc.addEventListener("click", event => {
 
 function showModal(targetImg){
     const modal = basicLightbox.create(`
-    <img src="${targetImg.querySelector('.gallery-image').dataset.source}" width="1112" height="640"> `,
+    <img src="${targetImg.dataset.source}" width="1112" height="640" alt="${targetImg.alt}"> `,
     {
         onShow: (instance) => {
-            document.addEventListener('keydown', modalClose);
+            document.addEventListener("keydown", modalClose);
         },
         onClose: (instance) => {
-            document.removeEventListener('keydown', modalClose);
+            document.removeEventListener("keydown", modalClose);
         }
     }
     );
@@ -129,7 +120,7 @@ function showModal(targetImg){
     modal.show();
 
     function modalClose(e){
-        if (e.code==='Escape')
+        if (e.code==="Escape")
         modal.close();
     }
 };
