@@ -34,6 +34,12 @@ ul{
     align-items: center;
 }
 
+.gallery>li::after{
+    opacity: 0;
+    transition: opacity 1000ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .gallery>li:hover::after{
   content: '';
   position: absolute;
@@ -44,6 +50,7 @@ ul{
   background-image: url('../png/bxs_hand-down.png');
   background-size: cover;
   z-index: 3; 
+  opacity: 1;
 }
 
 a{
